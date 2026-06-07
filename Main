@@ -1,0 +1,38 @@
+import java.util.*;
+public class Main
+{
+    public static void main(String args[])
+    {
+        Scanner sc = new Scanner(System.in);
+        BookLinkedList list = new BookLinkedList();
+        System.out.print("Enter Number of Books: ");
+        int n = sc.nextInt();
+        sc.nextLine();
+        for(int i = 1; i <= n; i++)
+        {
+            System.out.println("Enter Details of Book " + i);
+            System.out.print("ISBN: ");
+            String isbn = sc.nextLine();
+            System.out.print("Title: ");
+            String title = sc.nextLine();
+            System.out.print("Author: ");
+            String author = sc.nextLine();
+            System.out.print("Publisher: ");
+            String publisher = sc.nextLine();
+            BookNode b = new BookNode(isbn, title, author, publisher);
+            list.addBook(b);
+        }
+        System.out.print("\nEnter ISBN to search: ");
+        String searchISBN = sc.nextLine();
+        BookNode result = list.searchBook(searchISBN);
+        if(result != null)
+        {
+            System.out.println("Book Found");
+            result.displayBook();
+        }
+        else
+        {
+            System.out.println("Book Not Found");
+        }
+    }
+}
